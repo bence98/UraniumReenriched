@@ -1,0 +1,71 @@
+#Part of Uranium Reenriched mod
+
+itemGroup.UraniumRE=Uranium Reenriched mod
+#Items
+item.urecmp.gear.name=Radiating Gear
+item.urecmp.grndcmp.name=Grinder component
+item.urecmp.coil.name=Coil
+item.urecmp.c14cry.name=C-14 crystal
+item.urecmp.ur_dust.name=Uranium dust
+item.urecmp.ur_tnd.name=Tiny uranium dust
+item.urecmp.pb_dust.name=Lead dust
+item.urecmp.pb_tnd.name=Tiny lead dust
+item.urecmp.fe_dust.name=Iron dust
+item.urecmp.fe_tnd.name=Tiny iron dust
+item.urecmp.rad_fe.name=Radiating iron
+item.urecmp.c14.name=Carbon-14
+item.urecmp.pb_i.name=Lead ingot
+item.urecmp.ur_i.name=Uranium ingot
+item.urecmp.heavybucket.name=Bucket of Heavy water
+item.urecmp.pu_dust.name=Plutonium dust
+item.urecmp.pu_tnd.name=Tiny plutonium dust
+item.urecmp.pu_i.name=Plutonium ingot
+item.urecmp.nucl_goo.name=Nuclear goo
+item.urecmp.mut_stick.name=Mutated stick
+item.urecmp.debugger.name=Debugger
+item.urecmp.null.name=Four Oh Four Ingot
+
+item.urecell.empty.name=Empty cell
+item.urecell.uranium.name=Uranium cell
+item.urecell.depleted.name=Depleted fuel cell
+item.urecell.deut.name=Deuterium cell
+item.urecell.plasma.name=Plasma cell
+item.urecell.steam.name=Steam cell
+item.urecell.null.name=Cell of Nonexistence
+#Blocks
+tile.ureore.uranium.name=Uranium ore
+tile.ureore.lead.name=Lead ore
+
+tile.uretech.reactor_one.name=Reactor Mk1
+tile.uretech.reactor_two.name=Reactor Mk2
+tile.uretech.reactor_three.name=<Unused>
+tile.uretech.ur_cleaner.name=Uranium cleaner
+tile.uretech.hazmat_rec.name=Hazardous Material Recycler (HMR)
+tile.uretech.deut_extr.name=Heavywater Extractor
+tile.uretech.plasma_heater.name=Plasma heater
+tile.uretech.pump.name=Water pump
+tile.uretech.pipe.name=Pipe
+tile.uretech.handle.name=Iron handle
+tile.uretech.turbine_one.name=Steam turbine
+tile.uretech.turbine_two.name=Advanced turbine
+tile.uretech.rf_in.name=RF driver
+tile.uretech.rf_out.name=RF modulator
+tile.uretech.eu_in.name=Electric rotator
+tile.uretech.eu_out.name=Electric inductor
+tile.uretech.null.name=Block of Missingno.
+
+fluid.tile.ureliq.heavywater.name=Heavywater
+fluid.tile.ureliq.steam.name=Steam
+
+container.ure.reactor_one.name=Reactor Mk1
+container.ure.uranium_cleaner.name=Uranium cleaner
+container.ure.deut_extractor.name=Heavywater Extractor
+container.ure.plasma_heater.name=Plasma heater
+container.ure.hmr.name=HMR
+
+chat.ure.invcontent=Inventory contents:
+chat.ure.flcontent=Tank contents:
+chat.ure.proc=Progress: %d%%
+chat.ure.rf=Energy: %d/%d
+chat.ure.pipenet=Connected tanks:
+chat.ure.reactor=Reactor status: %d | %d

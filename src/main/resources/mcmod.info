@@ -1,0 +1,16 @@
+[
+{
+  "modid": "UraniumRE",
+  "name": "Uranium Reenriched mod",
+  "description": "Continuation of the old Uranium mod",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["CsokiCraft"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
