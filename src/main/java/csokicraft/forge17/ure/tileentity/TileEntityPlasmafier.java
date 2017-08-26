@@ -24,6 +24,9 @@ public class TileEntityPlasmafier extends TileEntityInv implements IRotatable, I
 
 	@Override
 	public void updateEntity(){
+		if(getWorldObj().isRemote)
+			return;
+		
 		if(proc>=getCycleSize()){
 			slots[0].stackSize--;
 			if(slots[0].stackSize<=0) slots[0]=null;

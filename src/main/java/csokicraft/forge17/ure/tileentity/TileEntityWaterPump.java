@@ -20,8 +20,11 @@ public class TileEntityWaterPump extends TileEntity implements IRotatable, IFlui
 	
 	@Override
 	public void updateEntity(){
+		if(getWorldObj().isRemote)
+			return;
+		
 		if(proc>=getCycleSize()){
-			worldObj.setBlock(xCoord, yCoord-1, zCoord, Blocks.air);
+			worldObj.setBlockToAir(xCoord, yCoord-1, zCoord);
 			mbWater+=1000;
 			proc-=100;
 		}

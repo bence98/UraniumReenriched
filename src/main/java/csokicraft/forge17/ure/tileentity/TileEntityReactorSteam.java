@@ -2,7 +2,7 @@ package csokicraft.forge17.ure.tileentity;
 
 import csokicraft.forge17.ure.UraniumRE;
 import csokicraft.forge17.ure.recipe.IReactorFuelRecipe;
-import csokicraft.forge17.ure.recipe.ReactorFuelRecipe;
+import csokicraft.forge17.ure.recipe.ReactorFuelRecipeItemStack;
 import csokicraft.forge17.ure.recipe.ReactorFuelRecipes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -10,8 +10,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.*;
 
 public class TileEntityReactorSteam extends TileEntityReactorBasic implements IFluidHandler{
-	protected static final int CAPACITY=8000;
-	protected int mbWater, mbSteam;
+	public static final int CAPACITY=8000;
+	public int mbWater, mbSteam;
 	
 	public TileEntityReactorSteam(){
 		slots=new ItemStack[2];
@@ -29,7 +29,7 @@ public class TileEntityReactorSteam extends TileEntityReactorBasic implements IF
 			mbWater-=100;
 			mbSteam+=100;
 		}else{
-			if(rad>0&&mbWater>=100&&mbSteam+100<CAPACITY){
+			if(rad>0&&mbWater>=100&&mbSteam+100<=CAPACITY){
 				rad--;
 				proc++;
 			}
@@ -38,7 +38,7 @@ public class TileEntityReactorSteam extends TileEntityReactorBasic implements IF
 	
 	protected void checkFuel(){
 		IReactorFuelRecipe fuel=ReactorFuelRecipes.inst.getRecipe(slots[0]);
-		if(slots[1]==null&&fuel!=null&&fuel.getTier()<=getReactorTier()){
+		if(rad<MAX_RAD&&ctm<MAX_CTM&&slots[1]==null&&fuel!=null&&fuel.getTier()<=getReactorTier()){
 			rad+=fuel.getPower();
 			ctm+=fuel.getWaste();
 			slots[0].stackSize--;

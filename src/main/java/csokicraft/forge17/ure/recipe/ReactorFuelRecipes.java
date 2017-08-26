@@ -15,7 +15,7 @@ public class ReactorFuelRecipes{
 
 	public void registerRecipe(ItemStack in, int power, int waste, ItemStack remain, int tier){
 		if(hasRecipe(in)) removeRecipe(in);
-		recipes.add(new ReactorFuelRecipe(in, power, waste, remain, tier));
+		recipes.add(new ReactorFuelRecipeItemStack(in, power, waste, remain, tier));
 	}
 
 	public void registerRecipe(String ore, int power, int waste, ItemStack remain, int tier){

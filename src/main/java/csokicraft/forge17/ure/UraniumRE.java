@@ -32,7 +32,7 @@ import java.util.logging.Logger;
 
 /** Uranium Reenriched mod
   * @author CsokiCraft*/
-@Mod(modid="UraniumRE", version="1.0.7 for MC 1.7.10", dependencies="required-after:CsokiCraftUtil")
+@Mod(modid="UraniumRE", version="1.0.8 for MC 1.7.10", dependencies="required-after:CsokiCraftUtil")
 public class UraniumRE{
 	public static CreativeTabs tab=new CreativeTabURE();
 	
@@ -43,6 +43,7 @@ public class UraniumRE{
 	public static Block blockMachine=new BlockUreMachines().setCreativeTab(tab);
 	public static Block blockOre=new BlockUreOre().setCreativeTab(tab);
 	public static Block blockD2O=new BlockHeavyWater();
+	public static Block blockGoo=new BlockWasteGoo();
 	
 	public static Fluid heavyWater=new Fluid("heavyWater").setBlock(blockD2O).setUnlocalizedName("tile.ureliq.heavywater"),
 						steam=new Fluid("steam").setUnlocalizedName("tile.ureliq.steam");
@@ -129,6 +130,7 @@ public class UraniumRE{
 		GameRegistry.registerBlock(blockMachine, ItemUreBlock.class, "blockMachine");
 		GameRegistry.registerBlock(blockOre, ItemUreBlock.class, "blockOre");
 		GameRegistry.registerBlock(blockD2O, "blockHeavywater");
+		GameRegistry.registerBlock(blockGoo, "blockGoo");
 	}
 	
 	private void registerTEs(){

@@ -3,7 +3,7 @@ package csokicraft.forge17.ure.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import csokicraft.forge17.ure.recipe.ReactorFuelRecipe;
+import csokicraft.forge17.ure.recipe.ReactorFuelRecipeItemStack;
 import net.minecraft.item.ItemStack;
 
 public class ReactorInfuseRecipes{

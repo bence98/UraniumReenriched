@@ -35,6 +35,7 @@ item.urecell.null.name=Cell of Nonexistence
 #Blocks
 tile.ureore.uranium.name=Uranium ore
 tile.ureore.lead.name=Lead ore
+tile.ure.goo.name=Waste goo
 
 tile.uretech.reactor_one.name=Reactor Mk1
 tile.uretech.reactor_two.name=Reactor Mk2

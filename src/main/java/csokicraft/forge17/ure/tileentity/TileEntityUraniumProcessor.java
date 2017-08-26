@@ -25,6 +25,9 @@ public class TileEntityUraniumProcessor extends TileEntityInv implements IRotata
 
 	@Override
 	public void updateEntity(){
+		if(getWorldObj().isRemote)
+			return;
+		
 		if(!(inputValid()&&outputValid())) proc=0;
 		else if(proc>=getCycleSize()){
 			slots[0].stackSize--;

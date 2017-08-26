@@ -12,6 +12,9 @@ public class TileEntitySteamTurbine extends Rotator implements IFluidHandler{
 
 	@Override
 	public void updateEntity(){
+		if(getWorldObj().isRemote)
+			return;
+		
 		if(steamMb>=20){
 			steamMb-=20;
 			rotate(5);

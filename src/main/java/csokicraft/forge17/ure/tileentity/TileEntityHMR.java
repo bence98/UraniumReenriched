@@ -30,6 +30,9 @@ public class TileEntityHMR extends TileEntityInv implements IRotatable, IHasProg
 	
 	@Override
 	public void updateEntity(){
+		if(getWorldObj().isRemote)
+			return;
+		
 		RecyclingRecipe rec=RecyclingRecipes.inst.getRecipe(slots[0]);
 		if(rec!=null&&proc>=getCycleSize()){
 			slots[0].stackSize--;

@@ -32,6 +32,9 @@ public class TileEntityDeutExtractor extends TileEntityInv implements IRotatable
 	
 	@Override
 	public void updateEntity(){
+		if(getWorldObj().isRemote)
+			return;
+		
 		if(inputValid()&&outputValid()){
 			if(proc>=getCycleSize()){
 				mbHeavy-=1000;

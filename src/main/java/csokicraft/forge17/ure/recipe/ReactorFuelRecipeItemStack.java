@@ -2,10 +2,10 @@ package csokicraft.forge17.ure.recipe;
 
 import net.minecraft.item.ItemStack;
 
-public class ReactorFuelRecipe extends ReactorFuelRecipeAbstract{
+public class ReactorFuelRecipeItemStack extends ReactorFuelRecipeAbstract{
 	protected ItemStack in;
 	
-	public ReactorFuelRecipe(ItemStack stack, int pow, int wst, ItemStack remain, int t){
+	public ReactorFuelRecipeItemStack(ItemStack stack, int pow, int wst, ItemStack remain, int t){
 		super(pow, wst, remain, t);
 		in=stack;
 	}

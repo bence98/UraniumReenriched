@@ -10,6 +10,9 @@ public class TileEntityRFDriver extends Rotator implements IEnergyHandler{
 
 	@Override
 	public void updateEntity(){
+		if(getWorldObj().isRemote)
+			return;
+		
 		if(rf>=80){
 			rf-=80;
 			rotate(10);

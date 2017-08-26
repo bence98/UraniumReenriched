@@ -4,7 +4,7 @@ import csokicraft.forge17.ure.CommonProxy;
 import csokicraft.forge17.ure.common.IHasGui;
 import csokicraft.forge17.ure.common.IHasProgress;
 import csokicraft.forge17.ure.recipe.IReactorFuelRecipe;
-import csokicraft.forge17.ure.recipe.ReactorFuelRecipe;
+import csokicraft.forge17.ure.recipe.ReactorFuelRecipeItemStack;
 import csokicraft.forge17.ure.recipe.ReactorFuelRecipes;
 import csokicraft.forge17.ure.recipe.ReactorInfuseRecipes;
 import csokicraft.forge17.ure.recipe.ReactorInfuseRecipes.ReactorInfuseRecipe;
@@ -14,7 +14,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntityReactorBasic extends TileEntityInv implements IHasProgress, ISidedInventory, IHasGui{
-	protected int proc, rad, ctm;
+	public static int MAX_RAD=10_000, MAX_CTM=10_000;
+	
+	public int proc, rad, ctm;
 	
 	public TileEntityReactorBasic(){
 		slots=new ItemStack[3];
@@ -27,6 +29,9 @@ public class TileEntityReactorBasic extends TileEntityInv implements IHasProgres
 
 	@Override
 	public void updateEntity(){
+		if(getWorldObj().isRemote)
+			return;
+		
 		checkFuel();
 		checkInfuse();
 		
@@ -36,7 +41,7 @@ public class TileEntityReactorBasic extends TileEntityInv implements IHasProgres
 	
 	protected void checkFuel(){
 		IReactorFuelRecipe fuel=ReactorFuelRecipes.inst.getRecipe(slots[0]);
-		if(fuel!=null&&fuel.getTier()<=getReactorTier()){
+		if(rad<MAX_RAD&&ctm<MAX_CTM&&fuel!=null&&fuel.getTier()<=getReactorTier()){
 			rad+=fuel.getPower();
 			ctm+=fuel.getWaste();
 			slots[0].stackSize--;
@@ -96,6 +101,22 @@ public class TileEntityReactorBasic extends TileEntityInv implements IHasProgres
 		return ctm;
 	}
 
+	/** IInventory */
+	@Override
+	public boolean isItemValidForSlot(int i, ItemStack is){
+		switch(i){
+		case 0:
+			IReactorFuelRecipe fuel=ReactorFuelRecipes.inst.getRecipe(is);
+			return fuel!=null&&fuel.getTier()<=getReactorTier();
+		case 1:
+			if(getReactorTier()>1)
+				return false;
+			ReactorInfuseRecipe rec=ReactorInfuseRecipes.inst.getRecipe(slots[1]);
+			return rec!=null&&rec.getTier()<=getReactorTier();
+		}
+		return super.isItemValidForSlot(i, is);
+	}
+	
 	/** IHasProgress */
 	
 	@Override
