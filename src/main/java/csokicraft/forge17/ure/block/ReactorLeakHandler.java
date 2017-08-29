@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class ReactorLeakHandler{
-	public static final int LEAK_RADIUS=7, LEAK_MAX_ELEVATION=3, LEAK_INTENSITY=100, LEAK_PASSES=5;
+	public static final int LEAK_RADIUS=7, LEAK_MAX_ELEVATION=3, LEAK_INTENSITY=100, LEAK_PASSES=5, LEAK_MAX_DELAY=1000;
 	
 	public static boolean leak(int x, int y, int z, World w){
 		if(w.isAirBlock(x, y, z)){

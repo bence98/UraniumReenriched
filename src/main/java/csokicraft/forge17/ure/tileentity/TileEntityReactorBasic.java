@@ -22,6 +22,8 @@ public class TileEntityReactorBasic extends TileEntityInv implements IHasProgres
 	
 	public int proc, rad, ctm;
 	
+	protected int nextLeak=-1;
+	
 	public TileEntityReactorBasic(){
 		slots=new ItemStack[3];
 	}
@@ -39,7 +41,12 @@ public class TileEntityReactorBasic extends TileEntityInv implements IHasProgres
 		checkFuel();
 		checkInfuse();
 		
-		doLeak();
+		if(nextLeak<0)
+			randomizeLeak();
+		else if(nextLeak==0)
+			doLeak();
+		else
+			nextLeak--;
 	}
 	
 	protected void checkFuel(){
@@ -81,6 +88,12 @@ public class TileEntityReactorBasic extends TileEntityInv implements IHasProgres
 				}
 			}
 		}
+		
+		randomizeLeak();
+	}
+	
+	protected void randomizeLeak(){
+		nextLeak=worldObj.rand.nextInt(LEAK_MAX_DELAY);
 	}
 
 	private boolean outputValid(ItemStack out){
@@ -123,9 +136,9 @@ public class TileEntityReactorBasic extends TileEntityInv implements IHasProgres
 			IReactorFuelRecipe fuel=ReactorFuelRecipes.inst.getRecipe(is);
 			return fuel!=null&&fuel.getTier()<=getReactorTier();
 		case 1:
-			if(getReactorTier()>1)
+			if(getReactorTier()==2)
 				return false;
-			ReactorInfuseRecipe rec=ReactorInfuseRecipes.inst.getRecipe(slots[1]);
+			ReactorInfuseRecipe rec=ReactorInfuseRecipes.inst.getRecipe(is);
 			return rec!=null&&rec.getTier()<=getReactorTier();
 		}
 		return super.isItemValidForSlot(i, is);
