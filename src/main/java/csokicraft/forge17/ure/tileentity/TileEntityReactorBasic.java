@@ -13,6 +13,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import static csokicraft.forge17.ure.block.ReactorLeakHandler.*;
+
+import java.util.Random;
+
 public class TileEntityReactorBasic extends TileEntityInv implements IHasProgress, ISidedInventory, IHasGui{
 	public static int MAX_RAD=10_000, MAX_CTM=10_000;
 	
@@ -35,8 +39,7 @@ public class TileEntityReactorBasic extends TileEntityInv implements IHasProgres
 		checkFuel();
 		checkInfuse();
 		
-		if(ctm>0)
-			doLeak();
+		doLeak();
 	}
 	
 	protected void checkFuel(){
@@ -66,7 +69,18 @@ public class TileEntityReactorBasic extends TileEntityInv implements IHasProgres
 	}
 	
 	protected void doLeak(){
-		
+		for(int x=0;x<LEAK_PASSES;x++){
+			if(ctm<LEAK_INTENSITY)
+				return;
+			int i=worldObj.rand.nextInt(2*LEAK_RADIUS)-LEAK_RADIUS;
+			int k=worldObj.rand.nextInt(2*LEAK_RADIUS)-LEAK_RADIUS;
+			inner:for(int j=-LEAK_MAX_ELEVATION;j<LEAK_MAX_ELEVATION;j++){
+				if(leak(xCoord+i, yCoord+j, zCoord+k, worldObj)){
+					ctm-=LEAK_INTENSITY;
+					break inner;
+				}
+			}
+		}
 	}
 
 	private boolean outputValid(ItemStack out){

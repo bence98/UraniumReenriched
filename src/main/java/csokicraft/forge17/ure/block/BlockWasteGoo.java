@@ -7,9 +7,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 import csokicraft.forge17.ure.UraniumRE;
 import net.minecraft.block.BlockSnow;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
+import net.minecraft.util.DamageSource;
+import net.minecraft.world.World;
 
 public class BlockWasteGoo extends BlockSnow{
+	public static final int MAX_META = 7;
+
 	public BlockWasteGoo(){
 		super();
 		setHardness(0.1F);
@@ -24,6 +29,10 @@ public class BlockWasteGoo extends BlockSnow{
 	@Override
 	public int damageDropped(int p_149692_1_){
 		return 15;
+	}
+	
+	public void onEntityCollidedWithBlock(World w, int x, int y, int z, Entity p){
+		p.attackEntityFrom(DamageSource.cactus, 2.0F);
 	}
 	
 	@Override
