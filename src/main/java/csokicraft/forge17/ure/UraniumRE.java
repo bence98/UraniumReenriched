@@ -11,6 +11,7 @@ import csokicraft.forge17.ure.block.*;
 import csokicraft.forge17.ure.common.*;
 import csokicraft.forge17.ure.entity.HandlerPlasma;
 import csokicraft.forge17.ure.item.*;
+import csokicraft.forge17.ure.item.tool.*;
 import csokicraft.forge17.ure.pipe.HandlerPipeNet;
 import csokicraft.forge17.ure.recipe.*;
 import csokicraft.forge17.ure.recipe.RecyclingRecipes.WeightedItemStackResult;
@@ -19,8 +20,11 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.*;
 import net.minecraft.item.*;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fluids.*;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -32,7 +36,7 @@ import java.util.logging.Logger;
 
 /** Uranium Reenriched mod
   * @author CsokiCraft*/
-@Mod(modid="UraniumRE", version="1.0.8 for MC 1.7.10", dependencies="required-after:CsokiCraftUtil")
+@Mod(modid="UraniumRE", version="1.0.9 for MC 1.7.10", dependencies="required-after:CsokiCraftUtil")
 public class UraniumRE{
 	public static CreativeTabs tab=new CreativeTabURE();
 	
@@ -48,6 +52,14 @@ public class UraniumRE{
 	public static Fluid heavyWater=new Fluid("heavyWater").setBlock(blockD2O).setUnlocalizedName("tile.ureliq.heavywater"),
 						steam=new Fluid("steam").setUnlocalizedName("tile.ureliq.steam");
 	public static IFuelHandler fuelHandler=new UreFuelHandler();
+	
+	public static ToolMaterial radTool=EnumHelper.addToolMaterial("URE__RAD_FE", ToolMaterial.IRON.getHarvestLevel(), (int)(ToolMaterial.IRON.getMaxUses()*1.5), (int)(ToolMaterial.IRON.getEfficiencyOnProperMaterial()*1.3), (int)(ToolMaterial.IRON.getDamageVsEntity()*1.2), ToolMaterial.IRON.getEnchantability());
+	public static ArmorMaterial radArmor=EnumHelper.addArmorMaterial("URE__C14_CRY", 44, new int[]{ArmorMaterial.DIAMOND.getDamageReductionAmount(0), ArmorMaterial.DIAMOND.getDamageReductionAmount(1), ArmorMaterial.DIAMOND.getDamageReductionAmount(2), ArmorMaterial.DIAMOND.getDamageReductionAmount(3)}, ArmorMaterial.DIAMOND.getEnchantability());
+	
+	public static Item toolSword=new ItemRadSword().setUnlocalizedName("uretool.sword").setTextureName("UraniumRE:tool_sword");
+	public static Item toolPick=new ItemRadPick().setUnlocalizedName("uretool.pick").setTextureName("UraniumRE:tool_pickaxe");
+	public static Item toolAxe=new ItemRadAxe().setUnlocalizedName("uretool.axe").setTextureName("UraniumRE:tool_axe");
+	public static Item toolShovel=new ItemRadShovel().setUnlocalizedName("uretool.shovel").setTextureName("UraniumRE:tool_shovel");
 	
 	public static boolean rfAPI=false;
 	public static Logger logger=Logger.getLogger("UraniumRE-Log");
@@ -124,6 +136,11 @@ public class UraniumRE{
 		GameRegistry.registerItem(itemCell, "itemCell");
 		GameRegistry.registerItem(itemComponent, "itemComponent");
 		GameRegistry.registerItem(itemNuclear, "itemNuclear");
+		
+		GameRegistry.registerItem(toolSword, "itemRadSword");
+		GameRegistry.registerItem(toolPick, "itemRadPick");
+		GameRegistry.registerItem(toolAxe, "itemRadAxe");
+		GameRegistry.registerItem(toolShovel, "itemRadShovel");
 	}
 	
 	private void registerBlocks(){
@@ -291,6 +308,23 @@ public class UraniumRE{
 		GameRegistry.addRecipe(new ShapedOreRecipe(coil,
 				"---", "- -", "---",
 				'-', "ingotGold"));
+		//Tools
+		GameRegistry.addRecipe(new ShapedOreRecipe(toolSword,
+				"*", "*", "|",
+				'*', "ingotRadiatingIron",
+				'|', "stickWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(toolShovel,
+				"*", "|", "|",
+				'*', "ingotRadiatingIron",
+				'|', "stickWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(toolPick,
+				"***", " | ", " | ",
+				'*', "ingotRadiatingIron",
+				'|', "stickWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(toolAxe,
+				"**", "*|", " |",
+				'*', "ingotRadiatingIron",
+				'|', "stickWood").setMirrored(true));
 	}
 	
 	private static ItemStack resize(ItemStack s, int i){

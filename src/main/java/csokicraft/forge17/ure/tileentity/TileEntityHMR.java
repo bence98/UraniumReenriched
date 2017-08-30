@@ -62,9 +62,16 @@ public class TileEntityHMR extends TileEntityInv implements IRotatable, IHasProg
 		proc=nbt.getInteger("proc");
 	}
 
+	/** IINventory */
+	
 	@Override
 	public String getInventoryName(){
 		return "container.ure.hmr.name";
+	}
+	
+	@Override
+	public boolean isItemValidForSlot(int i, ItemStack is){
+		return i==0&&RecyclingRecipes.inst.hasRecipe(is);
 	}
 	
 	/** IHasProgress */

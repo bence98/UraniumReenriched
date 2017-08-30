@@ -70,9 +70,16 @@ public class TileEntityDeutExtractor extends TileEntityInv implements IRotatable
 		return slots[1]==null||(slots[1].isItemEqual(UREItems.cell_deu)&&slots[1].stackSize<slots[1].getMaxStackSize());
 	}
 	
+	/** IInventory */
+	
 	@Override
 	public String getInventoryName(){
 		return "container.ure.deut_extractor.name";
+	}
+	
+	@Override
+	public boolean isItemValidForSlot(int i, ItemStack is) {
+		return i==0&&is.isItemEqual(UREItems.cell_emp);
 	}
 	
 	/** IHasProgress */
@@ -134,7 +141,7 @@ public class TileEntityDeutExtractor extends TileEntityInv implements IRotatable
 
 	@Override
 	public boolean canInsertItem(int i, ItemStack is, int s){
-		return s!=ForgeDirection.DOWN.ordinal()&&i==0&&is.isItemEqual(UREItems.cell_emp);
+		return s!=ForgeDirection.DOWN.ordinal()&&isItemValidForSlot(i, is);
 	}
 
 	@Override

@@ -32,6 +32,12 @@ item.urecell.deut.name=Deuterium cell
 item.urecell.plasma.name=Plasma cell
 item.urecell.steam.name=Steam cell
 item.urecell.null.name=Cell of Nonexistence
+
+item.uretool.sword.name=Radiating iron Sword
+item.uretool.pick.name=Radiating iron Pickaxe
+item.uretool.axe.name=Radiating iron Axe
+item.uretool.shovel.name=Radiating iron Shovel
+
 #Blocks
 tile.ureore.uranium.name=Uranium ore
 tile.ureore.lead.name=Lead ore
