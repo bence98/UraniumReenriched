@@ -36,7 +36,7 @@ import java.util.logging.Logger;
 
 /** Uranium Reenriched mod
   * @author CsokiCraft*/
-@Mod(modid="UraniumRE", version="1.0.9 for MC 1.7.10", dependencies="required-after:CsokiCraftUtil")
+@Mod(modid="UraniumRE", version="1.1.0 for MC 1.7.10", dependencies="required-after:CsokiCraftUtil")
 public class UraniumRE{
 	public static CreativeTabs tab=new CreativeTabURE();
 	
@@ -179,6 +179,7 @@ public class UraniumRE{
 		
 		addEventHandler(HandlerPipeNet.inst);
 		addEventHandler(HandlerPlasma.inst);
+		addEventHandler(HandlerDeutBucket.inst);
 		
 		if(FluidRegistry.isFluidRegistered(heavyWater))
 			heavyWater=FluidRegistry.getFluid(heavyWater.getName());

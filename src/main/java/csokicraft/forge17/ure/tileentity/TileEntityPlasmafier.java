@@ -12,7 +12,7 @@ import csokicraft.forge17.ure.common.IRotatable;
 import csokicraft.forge17.ure.item.UREItems;
 
 public class TileEntityPlasmafier extends TileEntityInv implements IRotatable, IHasProgress, ISidedInventory, IHasGui{
-	private int proc;
+	public int proc;
 
 	public TileEntityPlasmafier(){
 		slots=new ItemStack[2];
@@ -27,12 +27,16 @@ public class TileEntityPlasmafier extends TileEntityInv implements IRotatable, I
 		if(getWorldObj().isRemote)
 			return;
 		
+		if(!inputValid())
+			proc=0;
+		
 		if(proc>=getCycleSize()){
 			slots[0].stackSize--;
 			if(slots[0].stackSize<=0) slots[0]=null;
 			
 			if(slots[1]==null) slots[1]=UREItems.cell_pla.copy();
 			else slots[1].stackSize++;
+			proc-=getCycleSize();
 		}
 	}
 	

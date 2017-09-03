@@ -16,7 +16,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntityHMR extends TileEntityInv implements IRotatable, IHasProgress, ISidedInventory, IHasGui{
-	private int proc;
+	public int proc;
 
 	public TileEntityHMR(){
 		slots=new ItemStack[5];

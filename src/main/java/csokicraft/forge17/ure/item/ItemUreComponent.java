@@ -133,7 +133,7 @@ public class ItemUreComponent extends Item{
 			is.stackSize--;
 			EntityItem e=new EntityItem(w, p.posX, p.posY, p.posZ, new ItemStack(Items.bucket));
 			w.spawnEntityInWorld(e);
-		}else is=new ItemStack(Items.bucket);
+		}else is.func_150996_a(Items.bucket);
 		return true;
 	}
 }

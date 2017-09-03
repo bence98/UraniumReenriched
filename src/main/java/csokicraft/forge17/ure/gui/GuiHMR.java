@@ -13,6 +13,7 @@ public class GuiHMR extends UreGuiContainer{
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
 		drawBackgroundImage(bgImage);
+		drawArrow(((ContainerHMR)inventorySlots).te);
 	}
 
 }

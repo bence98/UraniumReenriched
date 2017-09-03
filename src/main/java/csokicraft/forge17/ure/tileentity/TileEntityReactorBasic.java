@@ -97,7 +97,7 @@ public class TileEntityReactorBasic extends TileEntityInv implements IHasProgres
 	}
 
 	private boolean outputValid(ItemStack out){
-		return slots[2]==null||(slots[2].isItemEqual(out)&&slots[2].stackSize+out.stackSize<slots[2].getMaxStackSize());
+		return slots[2]==null||(slots[2].isItemEqual(out)&&slots[2].stackSize+out.stackSize<=slots[2].getMaxStackSize());
 	}
 
 	public int getReactorTier(){

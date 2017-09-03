@@ -19,7 +19,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 public class TileEntityDeutExtractor extends TileEntityInv implements IRotatable, IFluidHandler, IHasProgress, ISidedInventory, IHasGui{
 	public static final int CAPACITY=4000;
 	
-	protected int proc=0, mbHeavy=0;
+	public int proc=0, mbHeavy=0;
 
 	public TileEntityDeutExtractor(){
 		slots=new ItemStack[2];

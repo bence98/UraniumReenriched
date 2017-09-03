@@ -23,13 +23,6 @@ public class GuiReactor extends UreGuiContainer{
 							BAR_V0=31,
 							BAR_DX=12,
 							
-							ARR_H =15,
-							ARR_W =22,
-							ARR_X0=80,
-							ARR_Y0=35,
-							ARR_U0=176,
-							ARR_V0=14,
-							
 							FIRE_H=14,
 							FIRE_W=14,
 							FIRE_X0=95,
@@ -87,8 +80,7 @@ public class GuiReactor extends UreGuiContainer{
 	
 	private void drawArrow(){
 		TileEntityReactorBasic te=getContainerReactor().te;
-		int wArrow=te.getProgress()*ARR_W/te.getCycleSize();
-		drawTexturedModalRect(guiLeft+ARR_X0, guiTop+ARR_Y0, ARR_U0, ARR_V0, wArrow, ARR_H);
+		drawArrow(te);
 	}
 	
 	private void drawFire(){
