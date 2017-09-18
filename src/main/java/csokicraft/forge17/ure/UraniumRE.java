@@ -1,5 +1,6 @@
 package csokicraft.forge17.ure;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -26,9 +27,7 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fluids.*;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
+import net.minecraftforge.oredict.*;
 
 import static csokicraft.forge17.ure.item.UREItems.*;
 
@@ -55,11 +54,17 @@ public class UraniumRE{
 	
 	public static ToolMaterial radTool=EnumHelper.addToolMaterial("URE__RAD_FE", ToolMaterial.IRON.getHarvestLevel(), (int)(ToolMaterial.IRON.getMaxUses()*1.5), (int)(ToolMaterial.IRON.getEfficiencyOnProperMaterial()*1.3), (int)(ToolMaterial.IRON.getDamageVsEntity()*1.2), ToolMaterial.IRON.getEnchantability());
 	public static ArmorMaterial radArmor=EnumHelper.addArmorMaterial("URE__C14_CRY", 44, new int[]{ArmorMaterial.DIAMOND.getDamageReductionAmount(0), ArmorMaterial.DIAMOND.getDamageReductionAmount(1), ArmorMaterial.DIAMOND.getDamageReductionAmount(2), ArmorMaterial.DIAMOND.getDamageReductionAmount(3)}, ArmorMaterial.DIAMOND.getEnchantability());
+	public static int radArmorIdx = RenderingRegistry.addNewArmourRendererPrefix("c14");
 	
 	public static Item toolSword=new ItemRadSword().setUnlocalizedName("uretool.sword").setTextureName("UraniumRE:tool_sword");
 	public static Item toolPick=new ItemRadPick().setUnlocalizedName("uretool.pick").setTextureName("UraniumRE:tool_pickaxe");
 	public static Item toolAxe=new ItemRadAxe().setUnlocalizedName("uretool.axe").setTextureName("UraniumRE:tool_axe");
 	public static Item toolShovel=new ItemRadShovel().setUnlocalizedName("uretool.shovel").setTextureName("UraniumRE:tool_shovel");
+	
+	public static Item armorHead =new ItemRadArmor(radArmor, radArmorIdx, 0).setUnlocalizedName("urearmor.helm" ).setTextureName("UraniumRE:armor_helm" );
+	public static Item armorChest=new ItemRadArmor(radArmor, radArmorIdx, 1).setUnlocalizedName("urearmor.chest").setTextureName("UraniumRE:armor_chest");
+	public static Item armorLegs =new ItemRadArmor(radArmor, radArmorIdx, 2).setUnlocalizedName("urearmor.legs" ).setTextureName("UraniumRE:armor_legs" );
+	public static Item armorBoots=new ItemRadArmor(radArmor, radArmorIdx, 3).setUnlocalizedName("urearmor.boots").setTextureName("UraniumRE:armor_boots");
 	
 	public static boolean rfAPI=false;
 	public static Logger logger=Logger.getLogger("UraniumRE-Log");
@@ -141,6 +146,11 @@ public class UraniumRE{
 		GameRegistry.registerItem(toolPick, "itemRadPick");
 		GameRegistry.registerItem(toolAxe, "itemRadAxe");
 		GameRegistry.registerItem(toolShovel, "itemRadShovel");
+
+		GameRegistry.registerItem(armorHead,  "itemRadHelm" );
+		GameRegistry.registerItem(armorChest, "itemRadChest");
+		GameRegistry.registerItem(armorLegs,  "itemRadLegs" );
+		GameRegistry.registerItem(armorBoots, "itemRadBoots");
 	}
 	
 	private void registerBlocks(){

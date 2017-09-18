@@ -38,6 +38,11 @@ item.uretool.pick.name=Radiating iron Pickaxe
 item.uretool.axe.name=Radiating iron Axe
 item.uretool.shovel.name=Radiating iron Shovel
 
+item.urearmor.helm.name=Radiating Helmet
+item.urearmor.chest.name=Radiating Chestplate
+item.urearmor.legs.name=Radiating Leggings
+item.urearmor.boots.name=Radiating Boots
+
 #Blocks
 tile.ureore.uranium.name=Uranium ore
 tile.ureore.lead.name=Lead ore
