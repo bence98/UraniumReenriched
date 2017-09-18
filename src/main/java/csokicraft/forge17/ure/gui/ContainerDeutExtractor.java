@@ -11,7 +11,7 @@ public class ContainerDeutExtractor extends UreContainerBase{
 	protected int lastProc, lastHeavy;
 
 	public ContainerDeutExtractor(InventoryPlayer ip, TileEntityDeutExtractor tile){
-		super(ip);
+		super(ip, tile);
 		te=tile;
 		addSlotToContainer(new SlotInventory(te, 0, 56, 35));
 		addSlotToContainer(new SlotOutput(te, 1, 116, 35));

@@ -8,7 +8,7 @@ public class ContainerUraniumProcessor extends UreContainerBase{
 	protected TileEntityUraniumProcessor te;
 
 	public ContainerUraniumProcessor(InventoryPlayer ip, TileEntityUraniumProcessor tile){
-		super(ip);
+		super(ip, tile);
 		te=tile;
 		addSlotToContainer(new SlotInventory(te, 0, 56, 35));
 		addSlotToContainer(new SlotOutput(te, 1, 116, 35));

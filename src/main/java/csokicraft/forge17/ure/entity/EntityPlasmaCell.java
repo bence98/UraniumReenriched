@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import cofh.lib.util.position.BlockPosition;
 import csokicraft.forge17.ure.Vec3i;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

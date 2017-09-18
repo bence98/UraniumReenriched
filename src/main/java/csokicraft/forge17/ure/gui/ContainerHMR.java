@@ -11,7 +11,7 @@ public class ContainerHMR extends UreContainerBase{
 	protected int lastProc;
 
 	public ContainerHMR(InventoryPlayer ip, TileEntityHMR tile){
-		super(ip);
+		super(ip, tile);
 		te=tile;
 		addSlotToContainer(new SlotInventory(te, 0, 56, 35));
 		addSlotToContainer(new SlotOutput(te, 1, 116, 16));

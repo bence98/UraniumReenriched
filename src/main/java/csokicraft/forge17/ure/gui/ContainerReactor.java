@@ -11,7 +11,7 @@ public class ContainerReactor extends UreContainerBase{
 	protected int lastProc, lastRad, lastCtm, lastWater, lastSteam;
 
 	public ContainerReactor(InventoryPlayer ip, TileEntityReactorBasic tile){
-		super(ip);
+		super(ip, tile);
 		te=tile;
 		if(te instanceof TileEntityReactorSteam){
 			addSlotToContainer(new SlotInventory(te, 0, 76, 35));

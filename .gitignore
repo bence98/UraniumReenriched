@@ -17,6 +17,9 @@ out
 build
 .gradle
 
+#Linux
+.directory
+
 # other
 eclipse
 run

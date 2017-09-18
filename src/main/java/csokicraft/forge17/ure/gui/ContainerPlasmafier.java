@@ -11,7 +11,7 @@ public class ContainerPlasmafier extends UreContainerBase{
 	protected int lastProc;
 	
 	public ContainerPlasmafier(InventoryPlayer ip, TileEntityPlasmafier tile){
-		super(ip);
+		super(ip, tile);
 		te=tile;
 		addSlotToContainer(new SlotInventory(te, 0, 56, 35));
 		addSlotToContainer(new SlotOutput(te, 1, 116, 35));
