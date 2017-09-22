@@ -8,7 +8,9 @@ import csokicraft.forge17.ure.UraniumRE;
 import net.minecraft.block.BlockSnow;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
@@ -32,6 +34,13 @@ public class BlockWasteGoo extends BlockSnow{
 	}
 	
 	public void onEntityCollidedWithBlock(World w, int x, int y, int z, Entity p){
+		if(p instanceof EntityLivingBase) {
+			EntityLivingBase ent=(EntityLivingBase) p;
+			ItemStack boots=ent.getEquipmentInSlot(1);
+			if(boots!=null&&UraniumRE.armorBoots.equals(boots.getItem())) {
+				return;
+			}
+		}
 		p.attackEntityFrom(DamageSource.cactus, 2.0F);
 	}
 	

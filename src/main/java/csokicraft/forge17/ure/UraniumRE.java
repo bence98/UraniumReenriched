@@ -336,6 +336,19 @@ public class UraniumRE{
 				"**", "*|", " |",
 				'*', "ingotRadiatingIron",
 				'|', "stickWood").setMirrored(true));
+		//Armor
+		GameRegistry.addRecipe(new ShapedOreRecipe(armorHead,
+				"***", "* *",
+				'*', "gemCarbon14"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(armorChest,
+				"* *", "***", "***",
+				'*', "gemCarbon14"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(armorLegs,
+				"***", "* *", "* *",
+				'*', "gemCarbon14"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(armorBoots,
+				"* *", "* *",
+				'*', "gemCarbon14"));
 	}
 	
 	private static ItemStack resize(ItemStack s, int i){
